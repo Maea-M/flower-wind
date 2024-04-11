@@ -1,12 +1,14 @@
 /* Ma bare de recherche : 
 - [x] : Récupérer la ville renseignée par mon visiteur
-- [ ] : À partir du nom va aller trouver la latitude 
+- [x] : À partir du nom va aller trouver la latitude 
 et la longitude correspondantes
 - BONUS : Si la ville renseignée n'est pas dans la base de données
 (json) elle doit indiquer l'erreur au visiteur
 - BONUS : Autocompletion dans les noms de villes
 - BONUS : Enregistrer les dernières recherches 
 */
+
+import { Wind } from './Wind.js'
 
 class Search {
 
@@ -38,8 +40,9 @@ class Search {
         if (cityData) {
             const lat = cityData.lat
             const long = cityData.lng
+            new Wind({lat, long})
         } else {
-            alert('La ville renseignée n\'exsite pas')
+            alert('La ville renseignée n\'existe pas')
         }
     }
 
@@ -51,7 +54,7 @@ class Search {
             })
     }
 
-    getCityDataWithFor(cityName) {
+    /*getCityDataWithFor(cityName) {
         const cityNameLower = cityName.toLowerCase()
         let cityData = {}
         for (let i = 0; i < this.cities.length; i++) {
@@ -62,7 +65,7 @@ class Search {
             }
         }
         return cityData
-    }
+    }*/
 
     getCityData(userCityName) {
         const userCityNameLower = userCityName.toLowerCase()
